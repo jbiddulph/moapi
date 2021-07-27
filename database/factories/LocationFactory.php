@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Header;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class HeaderFactory extends Factory
+class LocationFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Header::class;
+    protected $model = Location::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +21,7 @@ class HeaderFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->sentence();
-
         return [
-            'location_id' => $this->faker->numberBetween(1, 10),
             'title' => $title,
             'description' => $this->faker->paragraph,
             'image' => $this->faker->imageUrl(1200, 600, 'reptiles'),

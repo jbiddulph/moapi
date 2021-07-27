@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Models;
-use App\Models\Venue;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Header;
 
-class Event extends Model
+class Location extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function eventVenue() {
-        return $this->belongsTo(Venue::class, 'venue_id');
+    public function headers() {
+        return $this->hasMany(Header::class);
     }
 }

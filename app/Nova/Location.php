@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Event extends Resource
+class Location extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Event::class;
+    public static $model = \App\Models\Location::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -33,7 +33,7 @@ class Event extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'eventName'
+        'id', 'title'
     ];
 
     /**
@@ -46,9 +46,9 @@ class Event extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Title'), 'eventName')->sortable()->required(),
-            Trix::make(__('Description'), 'eventDescription')->sortable(),
-            Image::make(__('Image'), 'eventPhoto')->required(),
+            Text::make(__('Title'), 'title')->sortable()->required(),
+            Image::make(__('Image'), 'image')->required(),
+            HasMany::make(__('Headers'), 'headers', 'App\Nova\Header')
         ];
     }
 

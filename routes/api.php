@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\VenueController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\SettingController;
@@ -20,17 +21,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Public Routes
+Route::resource('venues', VenueController::class);
 Route::resource('pages', PageController::class);
 Route::resource('headers', HeaderController::class);
 Route::resource('logos', LogoController::class);
 Route::resource('settings', SettingController::class);
 Route::resource('categorys', CategoryController::class);
+Route::get('/venues', [VenueController::class, 'index']);
 Route::get('/pages', [PageController::class, 'index']);
 Route::get('/headers', [HeaderController::class, 'index']);
 Route::get('/logos', [LogoController::class, 'index']);
 Route::get('/settings', [SettingController::class, 'index']);
 Route::get('/categories', [CategoriesController::class, 'index']);
 Route::get('/home', [PageController::class, 'home']);
+Route::get('/venues{id}', [PageController::class, 'show']);
+Route::get('venues/search/{name}', [VenueController::class, 'search']);
 Route::get('/pages{id}', [PageController::class, 'show']);
 Route::get('pages/search/{name}', [PageController::class, 'search']);
 Route::post('/register', [AuthController::class, 'register']);
@@ -39,6 +44,10 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    //Venues
+    Route::post('/venues', [VenueController::class, 'store']);
+    Route::put('/venues/{id}', [VenueController::class, 'update']);
+    Route::delete('/venues/{id}', [VenueController::class, 'destroy']);
     //Pages
     Route::post('/pages', [PageController::class, 'store']);
     Route::put('/pages/{id}', [PageController::class, 'update']);

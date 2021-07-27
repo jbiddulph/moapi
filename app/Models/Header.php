@@ -10,4 +10,8 @@ class Header extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function headerLocation() {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
 }

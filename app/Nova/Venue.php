@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Venue extends Resource
@@ -47,6 +48,7 @@ class Venue extends Resource
             ID::make(__('ID'), 'id')->sortable(),
             Text::make(__('Title'), 'venuename')->sortable()->required(),
             Image::make(__('Image'), 'photo')->required(),
+            HasMany::make(__('Events'), 'events', 'App\Nova\Event')
         ];
     }
 
