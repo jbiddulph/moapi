@@ -22,6 +22,7 @@ class VenueFactory extends Factory
     public function definition()
     {
         return [
+            'fsa_id' => $this->faker->numberBetween(1, 3000),
             'user_id' => $this->faker->numberBetween(1, 10),
             'email' => $this->faker->email,
             'venuename' => $this->faker->company,
@@ -36,6 +37,7 @@ class VenueFactory extends Factory
             'telephone' => $this->faker->phoneNumber,
             'latitude' => $this->faker->latitude,
             'longitude' => $this->faker->longitude,
+            'local_authority' => $this->faker->word,
             'website' => $this->faker->url,
             'photo' => $this->faker->image,
             'is_live' => $this->faker->numberBetween(0,1)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Venue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VenueController extends Controller
 {
@@ -14,12 +15,30 @@ class VenueController extends Controller
      */
     public function index()
     {
-        //
+        
+        $venues = DB::table('venues')->simplePaginate(15);
+        return $venues;
+        
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  string  $town
+     * @return \Illuminate\Http\Response
+     */
+    public function getTown($town)
+    {
+        return Venue::where('town', $town)->get();
+        // $venues = DB::table('venues')->where('town', $town)->simplePaginate(15);
+        // return $venues;
+        
     }
 
     /**
      * Show the form for creating a new resource.
      *
+     * 
      * @return \Illuminate\Http\Response
      */
     public function create()

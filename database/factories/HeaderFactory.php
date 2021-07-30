@@ -22,12 +22,10 @@ class HeaderFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->sentence();
-
         return [
             'location_id' => $this->faker->numberBetween(1, 10),
-            'title' => $title,
-            'description' => $this->faker->paragraph,
+            'title' => $this->faker->sentence(),
+            'description' => $this->faker->sentence(),
             'image' => $this->faker->imageUrl(1200, 600, 'reptiles'),
         ];
     }

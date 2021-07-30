@@ -15,6 +15,7 @@ class CreateVenuesTable extends Migration
     {
         Schema::create('venues', function (Blueprint $table) {
             $table->id();
+            $table->integer('fsa_id')->default(0);
             $table->integer('user_id')->default(0);
             $table->string('email')->nullable();
             $table->string('venuename')->nullable();
@@ -29,6 +30,7 @@ class CreateVenuesTable extends Migration
             $table->string('telephone')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
+            $table->string('local_authority')->nullable();
             $table->string('website')->nullable();
             $table->string('photo')->nullable();
             $table->integer('is_live')->default(1);

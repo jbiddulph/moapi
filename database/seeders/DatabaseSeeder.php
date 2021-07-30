@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PageSeeder::class,
             LogoSeeder::class,
+            LocationSeeder::class,
             HeaderSeeder::class,
             CategorySeeder::class,
             SettingSeeder::class,

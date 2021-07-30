@@ -46,7 +46,7 @@ class Location extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Title'), 'title')->sortable()->required(),
+            Text::make(__('Title'), 'town')->sortable()->required(),
             Image::make(__('Image'), 'image')->required(),
             HasMany::make(__('Headers'), 'headers', 'App\Nova\Header')
         ];

@@ -21,8 +21,11 @@ class LocationFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence();
+
         return [
-            'title' => $title,
+            'town' => $title,
+            'slug' => $this->faker->slug,
             'description' => $this->faker->paragraph,
             'image' => $this->faker->imageUrl(1200, 600, 'reptiles'),
         ];
