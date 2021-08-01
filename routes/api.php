@@ -6,6 +6,8 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\LogoController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LocationHeadersController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,7 @@ Route::get('/venues', [VenueController::class, 'index']);
 Route::get('/locations', [VenueController::class, 'getLocations']);
 Route::get('/pages', [PageController::class, 'index']);
 Route::get('/headers', [HeaderController::class, 'index']);
+Route::get('/headers/{town}', [HeaderController::class, 'getTownHeaders']);
 Route::get('/logos', [LogoController::class, 'index']);
 Route::get('/settings', [SettingController::class, 'index']);
 Route::get('/categories', [CategoriesController::class, 'index']);
@@ -42,8 +45,8 @@ Route::get('/locations/{town}', [VenueController::class, 'getTown']);
 Route::get('pages/search/{name}', [PageController::class, 'search']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
-
+// Route::get('/locations/{town}/headers', [LocationHeadersController::class, 'show']);
+Route::get('/locations/{location:town}/headers', [LocationHeadersController::class, 'index']);
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     //Venues
@@ -61,8 +64,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
-
-// 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

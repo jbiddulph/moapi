@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Header;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class HeaderController extends Controller
@@ -13,7 +14,21 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        return Header::all();
+        // return Header::all();
+        return Location::where('town', '')->get();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  string  $town
+     * @return \Illuminate\Http\Response
+     */
+    public function getTown($town)
+    {
+        // return Header::all();
+        return Location::where('town', $town)->get();
+        // return Location::all();
     }
 
     /**
@@ -35,12 +50,15 @@ class HeaderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $town
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Location $location)
     {
-        return Page::find($id);
+        $headers = $location->headers;
+        
+        \Log::info($headers);
+        return response()->json($headers);
     }
 
     /**
