@@ -29,8 +29,9 @@ class VenueController extends Controller
      */
     public function show($id)
     {
-        return Venue::where('id', $id)->first();
+        return Venue::where('id', $id)->get();
     }
+    
 
     /**
      * Display a listing of the resource.
@@ -64,17 +65,6 @@ class VenueController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Venue  $venue
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Venue $venue)
     {
         //
     }
