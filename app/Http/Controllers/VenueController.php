@@ -22,6 +22,17 @@ class VenueController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return Venue::where('id', $id)->first();
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  string  $town

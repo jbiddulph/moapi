@@ -38,7 +38,7 @@ Route::get('/logos', [LogoController::class, 'index']);
 Route::get('/settings', [SettingController::class, 'index']);
 Route::get('/categories', [CategoriesController::class, 'index']);
 Route::get('/home', [PageController::class, 'home']);
-Route::get('/venues/{id}', [PageController::class, 'show']);
+Route::get('/venues/{id}', [VenueController::class, 'show']);
 Route::get('venues/search/{name}', [VenueController::class, 'search']);
 Route::get('/pages/{id}', [PageController::class, 'show']);
 Route::get('/locations/{town}', [VenueController::class, 'getTown']);
