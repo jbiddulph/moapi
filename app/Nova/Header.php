@@ -45,7 +45,7 @@ class Header extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Text::make(__('Title'), 'title')->required(),
+            Text::make(__('Title'), 'title'),
             Image::make(__('Image'), 'image')->required(),
             Text::make(__('Description'), 'description')->hideFromIndex()->sortable(),
         ];
