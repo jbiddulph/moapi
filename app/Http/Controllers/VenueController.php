@@ -15,10 +15,8 @@ class VenueController extends Controller
      */
     public function index()
     {
-        
-        $venues = DB::table('venues')->simplePaginate(15);
+        $venues = DB::table('venues')->simplePaginate(50);
         return $venues;
-        
     }
 
     /**
