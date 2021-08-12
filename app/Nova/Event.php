@@ -5,7 +5,11 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Time;
+use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -47,8 +51,14 @@ class Event extends Resource
         return [
             ID::make(__('ID'), 'id')->sortable(),
             Text::make(__('Title'), 'eventName')->sortable()->required(),
-            Trix::make(__('Description'), 'eventDescription')->sortable(),
+            Trix::make(__('Description'), 'eventDetails')->sortable(),
+            Date::make(__('Date'), 'eventDate')->sortable()->required(),
+            Time::make(__('Start Time'), 'eventTimeStart')->sortable()->required(),
+            Time::make(__('End Time'), 'eventTimeEnd')->sortable()->required(),
+            Text::make(__('Type'), 'eventType')->sortable()->required(),
+            Number::make(__('Type'), 'eventCost')->sortable()->required(),
             Image::make(__('Image'), 'eventPhoto')->required(),
+            Boolean::make(__('Image'), 'isLive')->required(),
         ];
     }
 
