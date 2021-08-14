@@ -244,9 +244,9 @@ class Event extends Resource
                 '00:00' => '00:00'
             ]),
             Text::make(__('Type'), 'eventType')->sortable()->required(),
-            Number::make(__('Type'), 'eventCost')->sortable()->required(),
+            Number::make(__('Price'), 'eventCost')->sortable()->required(),
             Image::make(__('Image'), 'eventPhoto')->required(),
-            Boolean::make(__('Image'), 'isLive')->required(),
+            Boolean::make(__('Live'), 'is_live')->required(),
         ];
     }
 
